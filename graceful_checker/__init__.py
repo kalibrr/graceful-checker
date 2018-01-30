@@ -133,5 +133,4 @@ def parse_graceful_checker_options(description, grace_file=None):
     parser.add_argument('--all', dest='all', action='store_true', help='Show all errors')
     parser.add_argument('--color', dest='color', action='store_true', help='Leave color codes (if possible)')
     parser.add_argument('--allowance', dest='allowance', action='store', default=7, help='Grace allowance', type=int)
-    return parser.parse_args()
-
+    return parser.parse_known_args()[0]
