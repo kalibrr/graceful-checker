@@ -1,6 +1,7 @@
 #-*- encoding: utf-8 -*-
 from __future__ import absolute_import, division, print_function, unicode_literals
 
+import os
 import pkg_resources
 import argparse
 import json
@@ -63,7 +64,7 @@ def graceful_check(
     for error, is_crit, filename in get_errors():
         if not color:
             error = ansi_escape.sub('', error)
-            filename = ansi_escape.sub('', filename)
+            filename = os.path.relpath(ansi_escape.sub('', filename), os.path.dirname(grace_file))
 
         errors.append(error)
         if is_crit:
